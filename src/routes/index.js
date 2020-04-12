@@ -1,56 +1,17 @@
-import React from 'react'
-import { View, Image } from 'react-native'
-import {createAppContainer} from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack';
-import Login from '../screens/Login'
-import Welcome from '../screens/welcome'
-import SignUp from '../screens/SignUp'
-import Home from '../screens/Home'
-import {colors} from '../constants/themes'
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createAppContainer} from 'react-navigation';
+import HomeStack from './HomeStack';
+import AboutStack from './AboutStack';
 
-const screens = {
-  Welcome : {
-    screen: Welcome,
-    navigationOptions: {
-      header: null,
-    }
-  } ,
-  SignUp: {
-    screen: SignUp,
-    navigationOptions: {
-      // title: null,
-    }
-  },
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      // title: null,
-    }
-  }, 
-  Home : {
-    screen: Home,
-    navigationOptions: {
-      // title: null,
-    }
-  } ,
-}
 
-const navigations = createStackNavigator(screens, {
-    defaultNavigationOptions: {
-      headerStyle: {
-         backgroundColor: colors.primary, 
-        //  elevation : 0 //for android
-         },
-      headerBackTitle : null,
-      headerLeftContainerStyle : {
-        alignItems : 'center',
-        marginLeft :  2,
-        paddingRight : 2
-      } ,
-      headerRightContainerStyle : {},
+const Drawer = createDrawerNavigator({
+    Home : {
+        screen : HomeStack
+    },
+    About : {
+        screen : AboutStack
     }
-  });
+});
 
-  export default createAppContainer(navigations)
-
+export default createAppContainer(Drawer)
 
